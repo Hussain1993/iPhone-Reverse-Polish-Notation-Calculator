@@ -41,7 +41,6 @@
         self.display.text = digitPressed;
         self.userIsInTheMiddleOfEnteringANumber = YES;
     }
-    NSLog(@"The digit that was pressed was: %@", digitPressed);
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
@@ -57,6 +56,10 @@
 - (IBAction)enterPressed {
     [self.calculatorModel pushOperand:[self.display.text doubleValue]];
     self.userIsInTheMiddleOfEnteringANumber = NO;
+}
+- (IBAction)clearPressed:(id)sender {
+    self.display.text = @"0";
+    [self.calculatorModel clearStack];
 }
 
 @end

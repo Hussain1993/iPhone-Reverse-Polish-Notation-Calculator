@@ -49,8 +49,31 @@
     {
         result = [self popOperand] + [self popOperand];
     }
+    else if([operation isEqualToString:@"-"])
+    {
+        double secondNumber = [self popOperand];
+        double firstNumber = [self popOperand];
+        result = firstNumber - secondNumber;
+    }
+    else if([operation isEqualToString:@"*"])
+    {
+        result = [self popOperand] * [self popOperand];
+    }
+    else if([operation isEqualToString:@"/"])
+    {
+        double secondNumber = [self popOperand];
+        double firstNumber = [self popOperand];
+        result = firstNumber / secondNumber;
+    }
     [self pushOperand:result];
     return result;
+}
+
+-(void)clearStack{
+    for(int i = 0; i < self.operandStack.count; i++)
+    {
+        [self popOperand];
+    }
 }
 
 
